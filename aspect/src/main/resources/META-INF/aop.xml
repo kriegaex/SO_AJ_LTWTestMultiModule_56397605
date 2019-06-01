@@ -1,0 +1,9 @@
+<aspectj>
+  <aspects>
+    <aspect name="de.scrum_master.aspect.CounterAspect"/>
+  </aspects>
+  <weaver options="-verbose">
+    <!-- weave anything -->
+    <include within="*"/>
+  </weaver>
+</aspectj>
