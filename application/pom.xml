@@ -13,6 +13,10 @@
   <artifactId>application</artifactId>
   <version>1.0-SNAPSHOT</version>
 
+  <properties>
+    <main-class>de.scrum_master.app.CounterApp</main-class>
+  </properties>
+
   <dependencies>
     <dependency>
       <groupId>de.scrum-master</groupId>
@@ -27,6 +31,10 @@
       <artifactId>junit</artifactId>
       <scope>test</scope>
     </dependency>
+    <dependency>
+      <groupId>com.sparkjava</groupId>
+      <artifactId>spark-core</artifactId>
+    </dependency>
   </dependencies>
 
   <build>
@@ -38,6 +46,22 @@
           <argLine>
             -javaagent:${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar
           </argLine>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <configuration>
+          <executable>java</executable>
+          <arguments>
+            <argument>
+              -javaagent:${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar
+            </argument>
+            <argument>-classpath</argument>
+            <!-- automatically creates the classpath using all project dependencies, also adding the project build directory -->
+            <classpath/>
+            <argument>${main-class}</argument>
+          </arguments>
         </configuration>
       </plugin>
     </plugins>
