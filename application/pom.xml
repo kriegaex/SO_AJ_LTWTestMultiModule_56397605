@@ -15,6 +15,7 @@
 
   <properties>
     <main-class>de.scrum_master.app.CounterApp</main-class>
+    <dummy>xx</dummy>
   </properties>
 
   <dependencies>
