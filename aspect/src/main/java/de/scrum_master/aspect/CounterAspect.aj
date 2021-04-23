@@ -7,7 +7,8 @@ import org.aspectj.lang.annotation.Aspect;
 @Aspect
 public class CounterAspect {
   @Around("execution(* *.*(..)) && @annotation(counter)")
-  public void myBeforeLogger(ProceedingJoinPoint joinPoint, Counter counter) {
+  public boolean myAroundAspect(ProceedingJoinPoint joinPoint, Counter counter) throws Throwable {
     System.out.println(joinPoint + " -> " + counter.name());
+    return true;
   }
 }
